@@ -2,10 +2,15 @@ import { Box, Button, Typography } from "@mui/material";
 import "./App.css";
 import Board from "./components/Board";
 import { useState } from "react";
+import { useTheme } from "./context/ThemeContext";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function App() {
   const [squareValue, setSquareValue] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+
+  const { mode, toggleTheme } = useTheme();
 
   const calculateWinner = (squareValue: Array<null | string>) => {
     const lines = [
@@ -58,12 +63,18 @@ function App() {
         variant="h3"
         fontWeight={"bold"}
         fontFamily={"Bebas Neue"}
-        sx={{ ml: 2, mt: 3 }}
+        sx={{ ml: 2, mt: 3, display: "inline-flex" }}
       >
         Tic Tac Toe
       </Typography>
+      <Button
+        onClick={toggleTheme}
+        sx={{ minWidth: 0, padding: 0, ml: 2, mb: 3 }} // To make button smaller
+      >
+        {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+      </Button>
 
-      <Box sx={{ mt: 5, ml: 2 }}>
+      <Box sx={{ mt: 3, ml: 2 }}>
         <Typography variant="body1">
           {calculateWinner(squareValue) !== "null"
             ? `Winner: ${calculateWinner(squareValue)}`
