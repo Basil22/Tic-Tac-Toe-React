@@ -7,7 +7,36 @@ function App() {
   const [squareValue, setSquareValue] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
+  const calculateWinner = (squareValue: Array<null | string>) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squareValue[a] &&
+        squareValue[a] === squareValue[b] &&
+        squareValue[a] === squareValue[c]
+      ) {
+        return squareValue[a];
+      }
+    }
+    return "null";
+  };
+
   const handleClick = (i: number) => {
+    if (squareValue[i] || calculateWinner(squareValue) !== "null") {
+      return;
+    }
+
     const nextCell = squareValue.slice();
     if (xIsNext) {
       nextCell[i] = "X";
@@ -35,6 +64,16 @@ function App() {
       </Typography>
 
       <Box sx={{ mt: 5, ml: 2 }}>
+        <Typography variant="body1">
+          {calculateWinner(squareValue) !== "null"
+            ? `Winner: ${calculateWinner(squareValue)}`
+            : !squareValue.includes(null)
+            ? "Draw"
+            : `Next player: ${xIsNext ? "X" : "O"}`}
+        </Typography>
+      </Box>
+
+      <Box sx={{ mt: 2, ml: 2 }}>
         <Box display={"inline-flex"}>
           <Board value={squareValue[0]} handleSetInput={() => handleClick(0)} />
           <Board value={squareValue[1]} handleSetInput={() => handleClick(1)} />
