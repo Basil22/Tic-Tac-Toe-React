@@ -1,0 +1,8 @@
+/* App.css */
+@media (max-width: 600px) {
+  .board {
+    font-size: 8vw; /* Increase font size on smaller screens */
+    min-width: 20vw;
+    min-height: 20vw;
+  }
+}

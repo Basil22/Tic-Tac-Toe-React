@@ -61,7 +61,18 @@ function App() {
     calculateWinner(squareValue) !== "null" || !squareValue.includes(null);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 2,
+        boxSizing: "border-box",
+      }}
+    >
       <Typography
         variant="h3"
         fontWeight={"bold"}
@@ -69,25 +80,33 @@ function App() {
       >
         Tic Tac Toe
       </Typography>
-      <Button
-        onClick={toggleTheme}
-        disableTouchRipple
-        sx={{ minWidth: 0, padding: 0, ml: 2, mb: 3 }} // To make button smaller
+      <Box
+        sx={{
+          position: "absolute",
+          top: 16,
+          right: 16,
+        }}
       >
-        {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
-      </Button>
+        <Button
+          onClick={toggleTheme}
+          disableTouchRipple
+          sx={{ minWidth: 0, padding: 0, ml: 2, mb: 3 }} // To make button smaller
+        >
+          {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+        </Button>
+      </Box>
 
       <Box sx={{ mt: 3, ml: 2 }}>
         {calculateWinner(squareValue) !== "null" ? (
-          <Typography variant="h5" color="green">
+          <Typography variant="body1" color="green">
             Winner: {calculateWinner(squareValue)}
           </Typography>
         ) : !squareValue.includes(null) ? (
-          <Typography variant="h5" color="info">
+          <Typography variant="body1" color="info">
             Draw
           </Typography>
         ) : (
-          <Typography variant="h5" sx={{ fontFamily: "Helvetica" }}>
+          <Typography variant="body1" sx={{ fontFamily: "Helvetica" }}>
             Next player: {xIsNext ? "X" : "O"}
           </Typography>
         )}
@@ -148,7 +167,11 @@ function App() {
           />
         </Box>
 
-        <Box>
+        <Box
+          sx={{
+            alignItems: "center",
+          }}
+        >
           <Button
             variant="contained"
             color="error"
