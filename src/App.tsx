@@ -76,7 +76,7 @@ function App() {
       <Typography
         variant="h3"
         fontWeight={"bold"}
-        sx={{ ml: 2, mt: 3, display: "inline-flex" }}
+        sx={{ ml: 2, display: "inline-flex" }}
       >
         Tic Tac Toe
       </Typography>
@@ -167,11 +167,7 @@ function App() {
           />
         </Box>
 
-        <Box
-          sx={{
-            alignItems: "center",
-          }}
-        >
+        <Box>
           <Button
             variant="contained"
             color="error"
