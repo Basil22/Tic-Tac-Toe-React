@@ -57,50 +57,95 @@ function App() {
     setSquareValue(Array(9).fill(null));
   };
 
+  const isGameOver =
+    calculateWinner(squareValue) !== "null" || !squareValue.includes(null);
+
   return (
     <Box>
       <Typography
         variant="h3"
         fontWeight={"bold"}
-        fontFamily={"Bebas Neue"}
         sx={{ ml: 2, mt: 3, display: "inline-flex" }}
       >
         Tic Tac Toe
       </Typography>
       <Button
         onClick={toggleTheme}
+        disableTouchRipple
         sx={{ minWidth: 0, padding: 0, ml: 2, mb: 3 }} // To make button smaller
       >
         {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </Button>
 
       <Box sx={{ mt: 3, ml: 2 }}>
-        <Typography variant="body1">
-          {calculateWinner(squareValue) !== "null"
-            ? `Winner: ${calculateWinner(squareValue)}`
-            : !squareValue.includes(null)
-            ? "Draw"
-            : `Next player: ${xIsNext ? "X" : "O"}`}
-        </Typography>
+        {calculateWinner(squareValue) !== "null" ? (
+          <Typography variant="body1" color="green">
+            Winner: {calculateWinner(squareValue)}
+          </Typography>
+        ) : !squareValue.includes(null) ? (
+          <Typography variant="body1" color="info">
+            Draw
+          </Typography>
+        ) : (
+          <Typography variant="body1">
+            Next player: {xIsNext ? "X" : "O"}
+          </Typography>
+        )}
       </Box>
 
       <Box sx={{ mt: 2, ml: 2 }}>
         <Box display={"inline-flex"}>
-          <Board value={squareValue[0]} handleSetInput={() => handleClick(0)} />
-          <Board value={squareValue[1]} handleSetInput={() => handleClick(1)} />
-          <Board value={squareValue[2]} handleSetInput={() => handleClick(2)} />
+          <Board
+            value={squareValue[0]}
+            handleSetInput={() => handleClick(0)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[1]}
+            handleSetInput={() => handleClick(1)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[2]}
+            handleSetInput={() => handleClick(2)}
+            disabled={isGameOver}
+          />
         </Box>
 
         <Box display={"flex"}>
-          <Board value={squareValue[3]} handleSetInput={() => handleClick(3)} />
-          <Board value={squareValue[4]} handleSetInput={() => handleClick(4)} />
-          <Board value={squareValue[5]} handleSetInput={() => handleClick(5)} />
+          <Board
+            value={squareValue[3]}
+            handleSetInput={() => handleClick(3)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[4]}
+            handleSetInput={() => handleClick(4)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[5]}
+            handleSetInput={() => handleClick(5)}
+            disabled={isGameOver}
+          />
         </Box>
 
         <Box display={"flex"}>
-          <Board value={squareValue[6]} handleSetInput={() => handleClick(6)} />
-          <Board value={squareValue[7]} handleSetInput={() => handleClick(7)} />
-          <Board value={squareValue[8]} handleSetInput={() => handleClick(8)} />
+          <Board
+            value={squareValue[6]}
+            handleSetInput={() => handleClick(6)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[7]}
+            handleSetInput={() => handleClick(7)}
+            disabled={isGameOver}
+          />
+          <Board
+            value={squareValue[8]}
+            handleSetInput={() => handleClick(8)}
+            disabled={isGameOver}
+          />
         </Box>
 
         <Box>

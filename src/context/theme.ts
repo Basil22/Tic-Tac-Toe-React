@@ -15,4 +15,13 @@ export const getDesignTokens = (mode: string) => ({
           },
         }),
   },
+  typography: {
+    fontFamily: `'Roboto', 'Arial', sans-serif`,
+    h3: {
+      fontFamily: `'Bebas Neue'`,
+    },
+    body1: {
+      fontFamily: `Helvetica`,
+    },
+  },
 });
