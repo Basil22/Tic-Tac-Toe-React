@@ -69,14 +69,13 @@ function App() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: 2,
         boxSizing: "border-box",
       }}
     >
       <Typography
         variant="h3"
         fontWeight={"bold"}
-        sx={{ ml: 2, display: "inline-flex" }}
+        sx={{ display: "inline-flex" }}
       >
         Tic Tac Toe
       </Typography>
@@ -90,13 +89,13 @@ function App() {
         <Button
           onClick={toggleTheme}
           disableTouchRipple
-          sx={{ minWidth: 0, padding: 0, ml: 2, mb: 3 }} // To make button smaller
+          sx={{ minWidth: 0, padding: 0 }} // To make button smaller
         >
           {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
         </Button>
       </Box>
 
-      <Box sx={{ mt: 3, ml: 2 }}>
+      <Box sx={{ mt: 3 }}>
         {calculateWinner(squareValue) !== "null" ? (
           <Typography variant="body1" color="green">
             Winner: {calculateWinner(squareValue)}
@@ -112,7 +111,7 @@ function App() {
         )}
       </Box>
 
-      <Box sx={{ mt: 2, ml: 2 }}>
+      <Box sx={{ mt: 2 }}>
         <Box display={"inline-flex"}>
           <Board
             value={squareValue[0]}
@@ -167,11 +166,20 @@ function App() {
           />
         </Box>
 
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Button
             variant="contained"
             color="error"
-            sx={{ mt: 5 }}
+            sx={{
+              mt: 5,
+            }}
             onClick={handleClearAll}
           >
             Clear All
