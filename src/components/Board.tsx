@@ -13,9 +13,12 @@ function Board({ value, handleSetInput, disabled }: BoardValue) {
         className="board"
         variant="outlined"
         sx={{
-          minWidth: 3,
-          padding: 3,
+          minWidth: 8,
+          padding: 8,
           borderRadius: 0,
+          fontSize: 80,
+          fontFamily: "Helvetica",
+          fontWeight: "Bold",
           backgroundColor: disabled ? "grey.300" : "background.paper",
           "&:disabled": {
             color: "text.disabled",

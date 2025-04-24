@@ -79,15 +79,15 @@ function App() {
 
       <Box sx={{ mt: 3, ml: 2 }}>
         {calculateWinner(squareValue) !== "null" ? (
-          <Typography variant="body1" color="green">
+          <Typography variant="h5" color="green">
             Winner: {calculateWinner(squareValue)}
           </Typography>
         ) : !squareValue.includes(null) ? (
-          <Typography variant="body1" color="info">
+          <Typography variant="h5" color="info">
             Draw
           </Typography>
         ) : (
-          <Typography variant="body1">
+          <Typography variant="h5" sx={{ fontFamily: "Helvetica" }}>
             Next player: {xIsNext ? "X" : "O"}
           </Typography>
         )}
