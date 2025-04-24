@@ -20,8 +20,5 @@ export const getDesignTokens = (mode: string) => ({
     h3: {
       fontFamily: `'Bebas Neue'`,
     },
-    body1: {
-      fontFamily: `Helvetica`,
-    },
   },
 });
